@@ -50,7 +50,13 @@ git remote add origin %REPO%
 echo.
 echo Kod GitHub-a gonderilir...
 git push -u origin main
+if not errorlevel 1 goto pushok
+echo.
+echo GitHub-daki kohne versiya sizin koddan ferqlidir. Sizin kodla evez edilir...
+git push -u origin main --force
 if errorlevel 1 goto pushfail
+
+:pushok
 
 echo.
 echo Render sehifesi acilir.
