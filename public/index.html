@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mağaza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="brand">Mağazam<small>El emeği ürünler</small></div>
+    <div class="header-actions">
+      <button class="user-chip" id="userChip">Giriş yap</button>
+      <button class="icon-btn" id="cartBtn" aria-label="Sepet">
+        🛍️<span class="badge" id="cartBadge" style="display:none">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="hero">
+    <h1>Elle tasarlanan ürünler, kapına kadar</h1>
+    <p>Instagram'da beğendiğin ürünleri buradan seçip kolayca sipariş verebilirsin.</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="products">Ürünler</button>
+    <button class="tab-btn" data-tab="orders">Siparişlerim</button>
+  </div>
+
+  <section id="productsView">
+    <div class="product-grid" id="productGrid">
+      <div class="loading-row">Ürünler yükleniyor...</div>
+    </div>
+  </section>
+
+  <section id="ordersView" style="display:none">
+    <div id="ordersList">
+      <div class="loading-row">Yükleniyor...</div>
+    </div>
+  </section>
+</div>
+
+<!-- Sepet -->
+<div class="overlay" id="cartOverlay"></div>
+<aside class="drawer" id="cartDrawer">
+  <div class="drawer-head">
+    <h3 style="margin:0">Sepetim</h3>
+    <button class="modal-close" id="closeCart" style="position:static">✕</button>
+  </div>
+  <div class="drawer-body" id="cartBody">
+    <div class="empty-state"><span class="emoji">🛍️</span>Sepetin boş</div>
+  </div>
+  <div class="drawer-foot" id="cartFoot" style="display:none">
+    <div class="total-row"><span>Toplam</span><span id="cartTotal">0 ₺</span></div>
+    <button class="btn btn-primary btn-block" id="checkoutBtn">Siparişi Tamamla</button>
+  </div>
+</aside>
+
+<!-- Checkout formu -->
+<div class="overlay" id="checkoutOverlay"></div>
+<div class="modal" id="checkoutModal">
+  <button class="modal-close" data-close="checkoutModal">✕</button>
+  <h3>Teslimat Bilgileri</h3>
+  <div class="form-error" id="checkoutError"></div>
+  <form id="checkoutForm">
+    <div class="field">
+      <label>Adres</label>
+      <textarea name="address" required placeholder="Teslimat adresini yaz"></textarea>
+    </div>
+    <div class="field">
+      <label>Not (opsiyonel)</label>
+      <textarea name="note" placeholder="Örn: kapıcıya bırakılabilir"></textarea>
+    </div>
+    <button class="btn btn-primary btn-block" type="submit">Siparişi Onayla</button>
+  </form>
+</div>
+
+<!-- Giriş -->
+<div class="overlay" id="loginOverlay"></div>
+<div class="modal" id="loginModal">
+  <button class="modal-close" data-close="loginModal">✕</button>
+  <h3>Giriş Yap</h3>
+  <div class="form-error" id="loginError"></div>
+  <form id="loginForm">
+    <div class="field">
+      <label>Telefon</label>
+      <input type="tel" name="phone" required placeholder="05xx xxx xx xx" />
+    </div>
+    <div class="field">
+      <label>Şifre</label>
+      <input type="password" name="password" required />
+    </div>
+    <button class="btn btn-primary btn-block" type="submit">Giriş Yap</button>
+    <p class="form-note">Hesabın yok mu? <button type="button" class="btn-text" id="goRegister">Kayıt ol</button></p>
+  </form>
+</div>
+
+<!-- Kayıt -->
+<div class="overlay" id="registerOverlay"></div>
+<div class="modal" id="registerModal">
+  <button class="modal-close" data-close="registerModal">✕</button>
+  <h3>Hesap Oluştur</h3>
+  <div class="form-error" id="registerError"></div>
+  <form id="registerForm">
+    <div class="field">
+      <label>Ad Soyad</label>
+      <input type="text" name="name" required />
+    </div>
+    <div class="field">
+      <label>Telefon</label>
+      <input type="tel" name="phone" required placeholder="05xx xxx xx xx" />
+    </div>
+    <div class="field">
+      <label>Şifre</label>
+      <input type="password" name="password" required minlength="4" />
+    </div>
+    <button class="btn btn-primary btn-block" type="submit">Kayıt Ol</button>
+    <p class="form-note">Zaten hesabın var mı? <button type="button" class="btn-text" id="goLogin">Giriş yap</button></p>
+  </form>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="/js/main.js"></script>
+</body>
+</html>

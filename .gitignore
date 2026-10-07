@@ -1,0 +1,9 @@
+node_modules/
+.env
+
+
+
+
+public/uploads/*
+!public/uploads/.gitkeep
+shop-data.json
